@@ -4,54 +4,149 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CI/CD Pipeline Project</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/dist/bootstrap.min.css" rel="stylesheet">
     <style>
-        body { background-color: #f8f9fa; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        .hero-section { background: linear-gradient(135deg, #24292e 0%, #007bff 100%); color: white; padding: 60px 0; border-bottom: 5px solid #0056b3; }
-        .pipeline-card { border: none; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s; }
-        .pipeline-card:hover { transform: translateY(-5px); }
-        .tech-badge { font-size: 0.9rem; margin-right: 5px; }
-        .project-img { max-width: 100%; border-radius: 15px; border: 3px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        body { 
+            margin: 0; 
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            background-color: #f0f2f5; 
+            color: #333;
+        }
+
+        /* Header Section */
+        .header { 
+            background-color: #24292e; 
+            background-image: linear-gradient(135deg, #24292e 0%, #2b3a4a 100%);
+            color: white; 
+            padding: 50px 20px; 
+            text-align: center;
+        }
+        .header h1 { margin: 0; font-size: 2.5rem; font-weight: 700; }
+        .header p { margin-top: 10px; font-size: 1.1rem; opacity: 0.8; }
+
+        /* Main Container */
+        .container { 
+            max-width: 1000px; 
+            margin: -30px auto 40px; 
+            padding: 0 20px;
+            display: flex;
+            align-items: stretch; 
+            gap: 20px;
+        }
+
+        /* Card Style */
+        .card { 
+            background: white; 
+            padding: 30px; 
+            border-radius: 12px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .card h2 { margin-top: 0; font-size: 1.6rem; color: #222; margin-bottom: 20px; }
+
+        /* List Items */
+        .list-item { 
+            display: flex; 
+            align-items: flex-start; 
+            margin-bottom: 15px; 
+            font-size: 1rem;
+            text-align: left;
+        }
+        .check { color: #28a745; font-weight: bold; margin-right: 12px; font-size: 1.1rem; }
+
+        /* Tech Buttons */
+        .btn-group { margin-top: 15px; }
+        .btn { 
+            padding: 6px 14px; 
+            border-radius: 30px; 
+            font-weight: 600; 
+            margin: 4px;
+            color: white;
+            display: inline-block;
+            font-size: 0.8rem;
+        }
+        .btn-github { background-color: #444; }
+        .btn-jenkins { background-color: #0066cc; }
+        .btn-docker { background-color: #3399ff; }
+        .btn-compose { background-color: #555; }
+
+        /* Image Display - Adjusted Size */
+        .image-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .image-container img { 
+            width: 80%; /* Image size reduced to 80% of its container */
+            max-width: 350px; /* Maximum width limit */
+            height: auto;
+            border-radius: 8px; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 1px solid #ddd;
+        }
+        .caption { margin-top: 15px; color: #777; font-style: italic; text-align: center; font-size: 0.9rem; }
+
+        footer { text-align: center; padding: 30px; color: #888; font-size: 0.85rem; }
+
+        /* Mobile View */
+        @media (max-width: 800px) {
+            .container { flex-direction: column; margin-top: 20px; }
+            .image-container img { width: 100%; }
+        }
     </style>
 </head>
 <body>
 
-<section class="hero-section text-center">
-    <div class="container">
-        <h1 class="display-4 fw-bold">Automated CI/CD Pipeline</h1>
-        <p class="lead">Built with Docker, GitHub, Jenkins & Docker Compose</p>
+    <div class="header">
+        <h1>Automated CI/CD Pipeline</h1>
+        <p>Built with Docker, Jenkins & Docker Compose</p>
     </div>
-</section>
 
-<div class="container my-5">
-    <div class="row align-items-center">
-        <div class="col-lg-6 mb-4">
-            <h2 class="mb-4">Project Overview</h2>
-            <p>Main ne is project ko ek mukammal <strong>DevOps Pipeline</strong> ke through build kiya hai. Iska workflow kuch is tarah hai:</p>
-            <ul class="list-group list-group-flush mb-4">
-                <li class="list-group-item bg-transparent">✅ <strong>GitHub:</strong> Source code yahan maintain kiya gaya hai.</li>
-                <li class="list-group-item bg-transparent">✅ <strong>Jenkins:</strong> Code automatically pick hota hai jaise hi koi change ho.</li>
-                <li class="list-group-item bg-transparent">✅ <strong>Docker & Compose:</strong> Applications ko containerize karke manage kiya gaya.</li>
-                <li class="list-group-item bg-transparent">✅ <strong>Deployment:</strong> Jenkins ne code pick kar ke mere <strong>Client Machine</strong> par deploy kiya.</li>
-            </ul>
-            <div>
-                <span class="badge bg-dark tech-badge">GitHub</span>
-                <span class="badge bg-primary tech-badge">Jenkins</span>
-                <span class="badge bg-info tech-badge">Docker</span>
-                <span class="badge bg-secondary tech-badge">Docker Compose</span>
+    <div class="container">
+        <div class="card">
+            <h2>Project Overview</h2>
+            
+            <div class="list-item">
+                <span class="check">✔</span>
+                <span><strong>GitHub:</strong> Source code is securely maintained in the repository.</span>
+            </div>
+            
+            <div class="list-item">
+                <span class="check">✔</span>
+                <span><strong>Jenkins:</strong> Automated code retrieval occurs as soon as changes are detected.</span>
+            </div>
+            
+            <div class="list-item">
+                <span class="check">✔</span>
+                <span><strong>Docker & Compose:</strong> Applications are containerized and managed efficiently.</span>
+            </div>
+            
+            <div class="list-item">
+                <span class="check">✔</span>
+                <span><strong>Deployment:</strong> Jenkins successfully deployed the build to the Client Machine.</span>
+            </div>
+
+            <div class="btn-group">
+                <span class="btn btn-github">GitHub</span>
+                <span class="btn btn-jenkins">Jenkins</span>
+                <span class="btn btn-docker">Docker</span>
+                <span class="btn btn-compose">Compose</span>
             </div>
         </div>
 
-        <div class="col-lg-6 text-center">
-            <img src="https://i.postimg.cc/66cggTzq/unnamed-1.jpg" alt="Pipeline Screenshot" class="project-img">
-            <p class="text-muted mt-2 small italic">Project Visualization / Evidence</p>
+        <div class="card image-container">
+            <img src="https://i.postimg.cc/9007wmLS/Gemini-Generated-Image-qg1l3qg1l3qg1l3q.png" alt="Evidence">
+            <p class="caption">Project Visualization / Evidence</p>
         </div>
     </div>
-</div>
 
-<footer class="text-center py-4 text-muted">
-    <p>&copy; 2026 | CI/CD Automated Deployment Project</p>
-</footer>
+    <footer>
+        © 2026 | CI/CD Automated Deployment Project
+    </footer>
 
 </body>
 </html>
